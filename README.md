@@ -5,6 +5,7 @@
 3.	Tạo file .env và copy nội dung của file .env.exmaple bỏ vào file .env 
     (hoăc lệnh cp .env.example .env)
 4.	Kết nối DATABASE:
+
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
