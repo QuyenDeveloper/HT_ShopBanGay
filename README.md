@@ -20,7 +20,7 @@
     DB_USERNAME=root
     DB_PASSWORD=
 
-5.	Để gửi mail web hoạt động ta sửa nội dụng của file .env như sau:
+6.	Để gửi mail web hoạt động ta sửa nội dụng của file .env như sau:
     MAIL_MAILER=smtp
     MAIL_HOST=mailhog
     MAIL_PORT=1025
@@ -40,4 +40,4 @@
     MAIL_FROM_ADDRESS= all*****@gmail.com    	//[nhập Gmail của bạn]
     MAIL_FROM_NAME="ALLStore"                	//[nhập tiêu đề của mail]
 
-6.	Chạy lệnh php artisan key:generate
+7.	Chạy lệnh php artisan key:generate
