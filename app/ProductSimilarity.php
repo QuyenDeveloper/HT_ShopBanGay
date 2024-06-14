@@ -43,12 +43,12 @@ class ProductSimilarity
             $similarityScores = [];
 
             foreach ($this->products as $_product) {
-                if ($product->id === $_product->id) {
+                if ($product['id'] === $_product['id']) {
                     continue;
                 }
-                $similarityScores['product_id_' . $_product->id] = $this->calculateSimilarityScore($product, $_product);
+                $similarityScores['product_id_' . $_product['id']] = $this->calculateSimilarityScore($product, $_product);
             }
-            $matrix['product_id_' . $product->id] = $similarityScores;
+            $matrix['product_id_' . $product['id']] = $similarityScores;
         }
         return $matrix;
     }
@@ -65,12 +65,12 @@ class ProductSimilarity
 
         foreach ($similarities as $productIdKey => $similarity) {
             $id       = intval(str_replace('product_id_', '', $productIdKey));
-            $products = array_filter($this->products, function ($product) use ($id) { return $product->id === $id; });
+            $products = array_filter($this->products, function ($product) use ($id) { return $product['id'] === $id; });
             if (! count($products)) {
                 continue;
             }
             $product = $products[array_keys($products)[0]];
-            $product->similarity = $similarity;
+            $product['similarity'] = $similarity;
             $sortedProducts[] = $product;
         }
         return $sortedProducts;
@@ -78,18 +78,18 @@ class ProductSimilarity
 
     protected function calculateSimilarityScore($productA, $productB)
     {
-        $productAFeatures = implode('', explode('\n',$productA->dattrung));
-        $productBFeatures = implode('', explode('\n',$productB->dattrung));
+        $productAFeatures = implode('', explode('\n',$productA['dattrung']));
+        $productBFeatures = implode('', explode('\n',$productB['dattrung']));
         // Log::info('My productAFeatures', ['productAFeatures' => $productAFeatures]);
         // Log::info('My productBFeatures', ['productBFeatures' => $productBFeatures]);
 
         return array_sum([
             (Similarity::hamming($productAFeatures, $productBFeatures) * $this->featureWeight),
             (Similarity::euclidean(
-                Similarity::minMaxNorm([$productA->money], 0, $this->priceHighRange),
-                Similarity::minMaxNorm([$productB->money], 0, $this->priceHighRange)
+                Similarity::minMaxNorm([$productA['money']], 0, $this->priceHighRange),
+                Similarity::minMaxNorm([$productB['money']], 0, $this->priceHighRange)
             ) * $this->priceWeight),
-            (Similarity::jaccard($productA->theloai, $productB->theloai) * $this->categoryWeight)
+            (Similarity::jaccard($productA['theloai'], $productB['theloai']) * $this->categoryWeight)
         ]) / ($this->featureWeight + $this->priceWeight + $this->categoryWeight);
     }
 }

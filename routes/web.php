@@ -117,12 +117,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('thongbaoadmin')->group(function () {
             Route::get('/', [thongbaoController::class, 'thongbaoadmin'])->name('thongbaoadmin');
             Route::get('xacthucdaxem/{idTB}', [thongbaoController::class, 'xacthucdaxem']);
-
-
         });
-
-
-
     });
 
 });
@@ -154,7 +149,6 @@ Route::prefix('trangchu')->group(function () {
 
     Route::prefix('blog')->group(function () {
         Route::get('/', [blogController::class, 'index_blog']);
-//        Route::get('{id_blog}', [blogController::class, 'ndung_blog']);
     });
 
     Route::prefix('phukien')->group(function () {
@@ -235,8 +229,6 @@ Route::middleware(['auth'])->group(function () {
 
             Route::get('huy_don/{idDM}', [donhangController::class, 'huy_don'])->name('huy_don');
             Route::get('huy_don2/{idDM}', [donhangController::class, 'huy_don2'])->name('huy_don2');
-
-
         });
 
     });

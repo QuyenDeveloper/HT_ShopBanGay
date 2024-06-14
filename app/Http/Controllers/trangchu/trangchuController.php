@@ -21,15 +21,10 @@ class trangchuController extends Controller
     {
         return view('web.home', [
            'title' => 'ALLSTORE',
-            'products_all' => $this->trangchuService->getAllProduct(),
-            'products_nam' => $this->trangchuService->getNamProduct(),
-            'products_nu' => $this->trangchuService->getNuProduct(),
-            'products_treem0' => $this->trangchuService->getTreemProduct1(),
-            'products_treem1' => $this->trangchuService->getTreemProduct2(),
-            'products_treem2' => $this->trangchuService->getTreemProduct3(),
-            'products_treem3' => $this->trangchuService->getTreemProduct4(),
-            'products_treem4' => $this->trangchuService->getTreemProduct5(),
-            'products_treem5' => $this->trangchuService->getTreemProduct6(),
+            'products_all' => $this->trangchuService->getAllHotProduct(),
+            'products_nam' => $this->trangchuService->getGenderBaseHotProduct("Nam"),
+            'products_nu' => $this->trangchuService->getGenderBaseHotProduct("Nữ"),
+            'products_treem0' => $this->trangchuService->getGenderBaseHotProduct("trẻ"),
             'products_sale' => $this->trangchuService->getSaleProduct(),
         ]);
     }

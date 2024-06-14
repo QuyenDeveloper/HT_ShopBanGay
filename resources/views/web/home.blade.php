@@ -53,7 +53,7 @@
             <!-- Popular Products -->
             <div class="fr-pop-wrap">
 
-                <h3 class="component-ttl"><span>sản phẩn phổ biến</span></h3>
+                <h3 class="component-ttl"><span>Sản phẩm phổ biến</span></h3>
 
                 <ul class="fr-pop-tabs sections-show">
                     <li><a data-frpoptab-num="1" data-frpoptab="#frpoptab-tab-1" href="#" class="active">Tất cả doanh mục</a></li>
@@ -74,13 +74,7 @@
                                     <div class="prod-i-top">
                                         <a href="/trangchu/sanpham/NDsanphan/{{$product_all->id}}" class="prod-i-img"><img  src="{{$product_all->anh1}}" alt="Aspernatur excepturi rem"/></a>
                                         <p class="prod-i-info">
-{{--                                            <span href="" onclick="themVaoyeuthich3('{{$product_all->id}}')"  class="prod-i-favorites"><span>Yêu Thích</span><i class="fa fa-heart"></i></span>--}}
-{{--                                            <a href="/trangchu/sanpham/NDsanphan/{{$product_all->id}}" class=" prod-i-qview"><span>Chi Tiết</span><i class="fa fa-search"></i></a>--}}
-{{--                                            <a class="prod-i-compare" href="#"><span>So Sánh</span><i class="fa fa-bar-chart"></i></a>--}}
                                         </p>
-{{--                                        <p class="prod-i-addwrap">--}}
-{{--                                            <a href="#" class="prod-i-add">Thêm Vào Giỏ hàng</a>--}}
-{{--                                        </p>--}}
                                     </div>
                                     <h3>
                                         <a href="/trangchu/sanpham/NDsanphan/{{$product_all->id}}">{{$product_all->name}}</a>
@@ -97,13 +91,10 @@
                                         @endif
                                         </p>
                                 </li>
-
-
                             @endforeach
 
                         </ul>
                     </div>
-{{--                           end ALL--}}
 
                     <p data-frpoptab-num="2" class="fr-pop-tab-mob" data-frpoptab="#frpoptab-tab-2">Nam</p>
                     <div class="flexslider prod-items fr-pop-tab" id="frpoptab-tab-2">
@@ -215,157 +206,6 @@
                                         </p>
                                 </li>
                             @endforeach
-
-                            @foreach($products_treem1 as $product_treem1)
-                                <li class="prod-i">
-                                    <div class="prod-i-top">
-                                        <a href="/trangchu/sanpham/NDsanphan/{{$product_treem1->id}}" class="prod-i-img"><img  src="{{$product_treem1->anh1}}" alt="Aspernatur excepturi rem"/></a>
-                                        <p class="prod-i-info">
-{{--                                            <a href="" onclick="themVaoyeuthich3('{{$product_treem1->id}}')" class="prod-i-favorites"><span>Yêu Thích</span><i class="fa fa-heart"></i></a>--}}
-{{--                                            <a href="/trangchu/sanpham/NDsanphan/{{$product_treem1->id}}" class=" prod-i-qview"><span>Chi Tiết</span><i class="fa fa-search"></i></a>--}}
-{{--                                            <a class="prod-i-compare" href="#"><span>So Sánh</span><i class="fa fa-bar-chart"></i></a>--}}
-                                        </p>
-{{--                                        <p class="prod-i-addwrap">--}}
-{{--                                            <a href="#" class="prod-i-add">Thêm Vào Giỏ hàng</a>--}}
-{{--                                        </p>--}}
-                                    </div>
-                                    <h3>
-                                        <a href="/trangchu/sanpham/NDsanphan/{{$product_treem1->id}}">{{$product_treem1->name}}</a>
-                                    </h3>
-                                    <p class="prod-i-price">
-                                        <?php $return = true ?>
-                                        @if($return && $product_treem1->money_sale > 0)
-                                            <center><p>{{$product_treem1->money_sale}} đ - <strike style="color: red;">{{$product_treem1->money}} đ</strike></p></center>
-
-                                    <?php $return = false ?>
-                                    @endif
-                                    @if($return)
-                                        <center><p>{{$product_treem1->money}} đ</p></center>
-                                        @endif
-                                        </p>
-                                </li>
-                            @endforeach
-
-                            @foreach($products_treem2 as $product_treem2)
-                                <li class="prod-i">
-                                    <div class="prod-i-top">
-                                        <a href="/trangchu/sanpham/NDsanphan/{{$product_treem2->id}}" class="prod-i-img"><img  src="{{$product_treem2->anh1}}" alt="Aspernatur excepturi rem"/></a>
-                                        <p class="prod-i-info">
-{{--                                            <a href="" onclick="themVaoyeuthich3('{{$product_treem2->id}}')" class="prod-i-favorites"><span>Yêu Thích</span><i class="fa fa-heart"></i></a>--}}
-{{--                                            <a href="/trangchu/sanpham/NDsanphan/{{$product_treem2->id}}" class=" prod-i-qview"><span>Chi Tiết</span><i class="fa fa-search"></i></a>--}}
-{{--                                            <a class="prod-i-compare" href="#"><span>So Sánh</span><i class="fa fa-bar-chart"></i></a>--}}
-                                        </p>
-{{--                                        <p class="prod-i-addwrap">--}}
-{{--                                            <a href="#" class="prod-i-add">Thêm Vào Giỏ hàng</a>--}}
-{{--                                        </p>--}}
-                                    </div>
-                                    <h3>
-                                        <a href="/trangchu/sanpham/NDsanphan/{{$product_treem2->id}}">{{$product_treem2->name}}</a>
-                                    </h3>
-                                    <p class="prod-i-price">
-                                        <?php $return = true ?>
-                                        @if($return && $product_treem2->money_sale > 0)
-                                            <center><p>{{$product_treem2->money_sale}} đ - <strike style="color: red;">{{$product_treem2->money}} đ</strike></p></center>
-
-                                    <?php $return = false ?>
-                                    @endif
-                                    @if($return)
-                                        <center><p>{{$product_treem2->money}} đ</p></center>
-                                        @endif
-                                        </p>
-                                </li>
-                            @endforeach
-
-                            @foreach($products_treem3 as $product_treem3)
-                                <li class="prod-i">
-                                    <div class="prod-i-top">
-                                        <a href="/trangchu/sanpham/NDsanphan/{{$product_treem3->id}}" class="prod-i-img"><img  src="{{$product_treem3->anh1}}" alt="Aspernatur excepturi rem"/></a>
-                                        <p class="prod-i-info">
-{{--                                            <a href="" onclick="themVaoyeuthich3('{{$product_treem3->id}}')" class="prod-i-favorites"><span>Yêu Thích</span><i class="fa fa-heart"></i></a>--}}
-{{--                                            <a href="/trangchu/sanpham/NDsanphan/{{$product_treem3->id}}" class=" prod-i-qview"><span>Chi Tiết</span><i class="fa fa-search"></i></a>--}}
-{{--                                            <a class="prod-i-compare" href="#"><span>So Sánh</span><i class="fa fa-bar-chart"></i></a>--}}
-                                        </p>
-{{--                                        <p class="prod-i-addwrap">--}}
-{{--                                            <a href="#" class="prod-i-add">Thêm Vào Giỏ hàng</a>--}}
-{{--                                        </p>--}}
-                                    </div>
-                                    <h3>
-                                        <a href="/trangchu/sanpham/NDsanphan/{{$product_treem3->id}}">{{$product_treem3->name}}</a>
-                                    </h3>
-                                    <p class="prod-i-price">
-                                        <?php $return = true ?>
-                                        @if($return && $product_treem3->money_sale > 0)
-                                            <center><p>{{$product_treem3->money_sale}} đ - <strike style="color: red;">{{$product_treem3->money}} đ</strike></p></center>
-
-                                    <?php $return = false ?>
-                                    @endif
-                                    @if($return)
-                                        <center><p>{{$product_treem3->money}} đ</p></center>
-                                        @endif
-                                        </p>
-                                </li>
-                            @endforeach
-
-                            @foreach($products_treem4 as $product_treem4)
-                                <li class="prod-i">
-                                    <div class="prod-i-top">
-                                        <a href="/trangchu/sanpham/NDsanphan/{{$product_treem4->id}}" class="prod-i-img"><img  src="{{$product_treem4->anh1}}" alt="Aspernatur excepturi rem"/></a>
-                                        <p class="prod-i-info">
-{{--                                            <a href="" onclick="themVaoyeuthich3('{{$product_treem4->id}}')" class="prod-i-favorites"><span>Yêu Thích</span><i class="fa fa-heart"></i></a>--}}
-{{--                                            <a href="/trangchu/sanpham/NDsanphan/{{$product_treem4->id}}" class="prod-i-qview"><span>Chi Tiết</span><i class="fa fa-search"></i></a>--}}
-{{--                                            <a class="prod-i-compare" href="#"><span>So Sánh</span><i class="fa fa-bar-chart"></i></a>--}}
-                                        </p>
-{{--                                        <p class="prod-i-addwrap">--}}
-{{--                                            <a href="#" class="prod-i-add">Thêm Vào Giỏ hàng</a>--}}
-{{--                                        </p>--}}
-                                    </div>
-                                    <h3>
-                                        <a href="/trangchu/sanpham/NDsanphan/{{$product_treem4->id}}">{{$product_treem4->name}}</a>
-                                    </h3>
-                                    <p class="prod-i-price">
-                                        <?php $return = true ?>
-                                        @if($return && $product_treem4->money_sale > 0)
-                                            <center><p>{{$product_treem4->money_sale}} đ - <strike style="color: red;">{{$product_treem4->money}} đ</strike></p></center>
-
-                                    <?php $return = false ?>
-                                    @endif
-                                    @if($return)
-                                        <center><p>{{$product_treem4->money}} đ</p></center>
-                                        @endif
-                                        </p>
-                                </li>
-                            @endforeach
-
-                            @foreach($products_treem5 as $product_treem5)
-                                <li class="prod-i">
-                                    <div class="prod-i-top">
-                                        <a href="/trangchu/sanpham/NDsanphan/{{$product_treem5->id}}" class="prod-i-img"><img  src="{{$product_treem5->anh1}}" alt="Aspernatur excepturi rem"/></a>
-                                        <p class="prod-i-info">
-{{--                                            <a href="" onclick="themVaoyeuthich3('{{$product_treem5->id}}')" class="prod-i-favorites"><span>Yêu Thích</span><i class="fa fa-heart"></i></a>--}}
-{{--                                            <a href="/trangchu/sanpham/NDsanphan/{{$product_treem5->id}}" class=" prod-i-qview"><span>Chi Tiết</span><i class="fa fa-search"></i></a>--}}
-{{--                                            <a class="prod-i-compare" href="#"><span>So Sánh</span><i class="fa fa-bar-chart"></i></a>--}}
-                                        </p>
-{{--                                        <p class="prod-i-addwrap">--}}
-{{--                                            <a href="#" class="prod-i-add">Thêm Vào Giỏ hàng</a>--}}
-{{--                                        </p>--}}
-                                    </div>
-                                    <h3>
-                                        <a href="/trangchu/sanpham/NDsanphan/{{$product_treem5->id}}">{{$product_treem5->name}}</a>
-                                    </h3>
-                                    <p class="prod-i-price">
-                                        <?php $return = true ?>
-                                        @if($return && $product_treem5->money_sale > 0)
-                                            <center><p>{{$product_treem5->money_sale}} đ - <strike style="color: red;">{{$product_treem5->money}} đ</strike></p></center>
-
-                                    <?php $return = false ?>
-                                    @endif
-                                    @if($return)
-                                        <center><p>{{$product_treem5->money}} đ</p></center>
-                                        @endif
-                                        </p>
-                                </li>
-                            @endforeach
-
                         </ul>
 
                     </div>

@@ -63,14 +63,20 @@
                     </div>
                 </div>
 
-                <div class="form-group ">
-                    <label  >Thương hiệu</label>
-                    <select class="form-control"  name="nhanhieu" >
-                        <option value="-1">Null</option>
-                        @foreach ($nhanhieus as $nhanhieu)
-                            <option value="{{$nhanhieu -> name}}" {{($products->nhanhieu == $nhanhieu -> name)? 'selected' :''}}>{{$nhanhieu -> name}}</option>
-                        @endforeach
-                    </select>
+                <div class="row">
+                    <div class="form-group col-sm-8">
+                        <label  >Thương hiệu</label>
+                        <select class="form-control"  name="nhanhieu" >
+                            <option value="-1">Null</option>
+                            @foreach ($nhanhieus as $nhanhieu)
+                                <option value="{{$nhanhieu -> name}}" {{($products->nhanhieu == $nhanhieu -> name)? 'selected' :''}}>{{$nhanhieu -> name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label>Số lượng</label>
+                        <input type="number" value="{{$products->soluong}}" class="form-control" name="soluong" id="soluong">
+                    </div>
                 </div>
 
 

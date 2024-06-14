@@ -33,9 +33,9 @@ class sanphamController extends Controller
             'giamgias' => $this->sanphamService->getSPGG(),
         ]);
     }
-    public function sanpham(Request $request, $showType = null,$gender = null)
+    public function sanpham(Request $request, $showType = null, $gender = null, $num = 12)
     {
-        //dd($showType, $gender);
+        //dd($num);
         // Set common variables
         $viewData = [
             'title' => 'Sản Phẩm',
@@ -47,16 +47,15 @@ class sanphamController extends Controller
             'sizes' => $this->sanphamService->getsize(),
         ];
 
-        // Apply filters if present
         if ($request->isMethod('post')) {
-            $viewData['products'] = $this->sanphamService->getBLoc($request);
+            $viewData['products'] = $this->sanphamService->getBLoc($request, $num);
         } else {
             if($gender != null){
                 $viewData['ten1'] = $gender;
                 $viewData['tenduoi'] = $gender;
-                $viewData['products'] = $this->sanphamService->getProductByGender($gender);
+                $viewData['products'] = $this->sanphamService->getProductByGender($gender, $num);
             }else{
-                $viewData['products'] = $this->sanphamService->getAll();
+                $viewData['products'] = $this->sanphamService->getAll($num);
             }
             //dd(count($viewData['products']));
         }
@@ -65,14 +64,13 @@ class sanphamController extends Controller
         if($showType === 'bang') return view('web.sanpham.sanpham_hienthiBang', $viewData);
     }
     public function NDsanphan(Product $idSP){
-        $products = $this->sanphamService->getAll()->items();
+        $products = $this->sanphamService->getAll2();
         $selectedId = $idSP->id;
-        $productSimilarity = new ProductSimilarity($products);
+        //Log::info('My message', ['user' => $selectedId]);
+        $productSimilarity = new ProductSimilarity($products->toArray());
         $similarityMatrix  = $productSimilarity->calculateSimilarityMatrix();
-        $products          = $productSimilarity->getProductsSortedBySimularity($selectedId, $similarityMatrix);
-
         // Log::info('My message', ['similarityMatrix' => $similarityMatrix]);
-        // Log::info('My message', ['user' => $products]);
+        $products = $productSimilarity->getProductsSortedBySimularity($selectedId, $similarityMatrix);
 
         $collection = collect($products);
 
@@ -85,6 +83,10 @@ class sanphamController extends Controller
             $perPage,
             $page,
         );
+
+        if(Auth::user() == null) return redirect()->route('login')->with([
+            'title' => 'Đăng nhập '
+        ]);
 
         return view('web.sanpham.NDsanphan',[
             'title'=>'Chi tiết sản phẩm',

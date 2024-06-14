@@ -8,34 +8,15 @@ use App\Models\mailTT;
 
 class trangchuService
 {
-    public function getAllProduct(){
-        return Product::where('id', '>=', 0)->get();
+    public function getAllHotProduct(){
+        return Product::orderByDesc('daBan')->paginate(12);
+    }
+    public function getGenderBaseHotProduct($gender){
+        return Product::where('menu_name1','like', "%$gender%")->orderByDesc('daBan')->paginate(12);
     }
 
-    public function getNamProduct(){
-        return Product::where('menu_name1', '=', 'nam')->get();
-    }
     public function getNuProduct(){
         return Product::where('menu_name1', '=', 'Nữ')->get();
-    }
-
-    public function getTreemProduct1(){
-        return Product::where('menu_name1', '=', 'Thanh thiếu niên (8-16) _ trẻ Nam')->get();
-    }
-    public function getTreemProduct2(){
-        return Product::Where('menu_name1', '=', 'Thanh thiếu niên (6-12) _ trẻ Nữ')->get();
-    }
-    public function getTreemProduct3(){
-        return Product::Where('menu_name1', '=', 'Trẻ em (3-6) _ trẻ Nam')->get();
-    }
-    public function getTreemProduct4(){
-        return Product::Where('menu_name1', '=', 'Trẻ em (3-6) _ trẻ Nữ')->get();
-    }
-    public function getTreemProduct5(){
-        return Product::Where('menu_name1', '=', 'Trẻ nhỏ & trẻ mới biết đi (1-3) _ tre Nam')->get();
-    }
-    public function getTreemProduct6(){
-        return Product::Where('menu_name1', '=', 'Trẻ nhỏ & trẻ mới biết đi (1-3) _ tre Nữ')->get();
     }
     public function getSaleProduct(){
         return Product::where('money_sale', '!=', 0)->get();

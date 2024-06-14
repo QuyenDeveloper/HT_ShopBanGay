@@ -181,30 +181,12 @@
                             <a href="/trangchu/sanpham/thuvien/Nam">
                                 Nam
                             </a>
-{{--                            <i class="fa fa-angle-right"></i>--}}
-{{--                            <ul>--}}
-{{--                                <li>--}}
-{{--                                    <a href="catalog-list.html">--}}
-{{--                                        Knitwear--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
                         </li>
 
                         <li>
                             <a href="/trangchu/sanpham/thuvien/Nu">
                                 Nữ
                             </a>
-{{--                            <i class="fa fa-angle-right"></i>--}}
-{{--                            <ul>--}}
-{{--                                <li>--}}
-{{--                                    <a href="catalog-list.html">--}}
-{{--                                        Jackets & Blazers--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </li>--}}
-
                         </li>
                         <li>
                             <a href="/trangchu/sanpham/thuvien/Tre_em">
@@ -245,13 +227,7 @@
                                     </ul>
                         </li>
                     </ul>
-{{--                    </li>--}}
-
-{{--                    </ul>--}}
                 </div>
-                <!-- Catalog menu - end -->
-
-                <!-- Main menu - start -->
                 <button type="button" class="mainmenu-btn">Menu</button>
 
                 <ul class="mainmenu">

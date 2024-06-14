@@ -61,11 +61,10 @@ class giohangController extends Controller
     public function datHang(Request $request){
 //        dd($request->input());
         return view('web.giohang.dathang', [
-           'title' => 'Đặt hàng',
+            'title' => 'Đặt hàng',
             'sanphams' =>$this->giohangService->getSp(),
             'khoSPs' => $this->giohangService->getkhoSP(),
             'diachis' => $this->giohangService->getDC(),
-
         ]);
     }
     public function XL_dathang(Request $request){
@@ -86,8 +85,6 @@ class giohangController extends Controller
                 return  redirect()->route('don_mua1', ['idKH' => Auth::user()->id]);
             }
         }
-
-
     }
 
     public function updateSL(Request $request){

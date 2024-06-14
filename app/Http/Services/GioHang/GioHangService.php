@@ -12,6 +12,7 @@ use App\Models\xacNhanDH;
 use App\Models\donmua;
 use App\Models\thongbao;
 use mysql_xdevapi\Exception;
+use Illuminate\Support\Facades\DB;
 
 class GioHangService
 {
@@ -131,7 +132,8 @@ class GioHangService
 
     public function xacnhanDH($request){
         $idDM = strtoupper(Str::random(10));
-//        dd($idDM);
+
+        DB::beginTransaction();
 
         try {
             xacNhanDH::create([
@@ -140,23 +142,21 @@ class GioHangService
                 'idDchi' => $request->input('diachi'),
                 'loinhan' => $request->input('loinhan'),
             ]);
-        }catch (\Exception $err){
-            return false;
-        }
 
-        $kh = User::where('id', '=', $request->input('idKH'))->first();
-        $noidung_admin = '"'.$kh->name.'" đã khởi tạo đơn hàng có mã: "'. $idDM.'"';
-        thongbao::create([
-            'idKH' => '1',
-            'idDM' => $idDM,
-            'tieude' => 'Có đơn hàng đang chờ xác nhận',
-            'noidung' => $noidung_admin,
-            'daxem' => 'chưa',
-        ]);
+            $kh = User::where('id', $request->input('idKH'))->first();
+            $noidung_admin = '"' . $kh->name . '" đã khởi tạo đơn hàng có mã: "' . $idDM . '"';
 
-        $SPGHs = GioHang::where('ID_KH', '=',  $request->input('idKH'))->get();
-        foreach ($SPGHs as $SPGH){
-            try {
+            thongbao::create([
+                'idKH' => '1',
+                'idDM' => $idDM,
+                'tieude' => 'Có đơn hàng đang chờ xác nhận',
+                'noidung' => $noidung_admin,
+                'daxem' => 'chưa',
+            ]);
+
+            $SPGHs = GioHang::where('ID_KH', $request->input('idKH'))->get();
+
+            foreach ($SPGHs as $SPGH) {
                 donmua::create([
                     'idKH' => $request->input('idKH'),
                     'idDMua' => $idDM,
@@ -164,15 +164,27 @@ class GioHangService
                     'sizeSP_kh' => $SPGH->sizeSP_kh,
                     'SLSP_KH' => $SPGH->SLSP_KH,
                 ]);
-                GioHang::where('ID_KH', '=',  $request->input('idKH'))->delete();
 
-            }catch (\Exception $err){
-                return false;
+                $product = Product::where('id', $SPGH->ID_SP)->first();
+                if ($product) {
+                    $product->soluong = $product->soluong - $SPGH->SLSP_KH;
+                    $product->daBan = $product->daBan + $SPGH->SLSP_KH;
+                    $product->save();
+                } else {
+                    throw new \Exception("Product not found: ID " . $SPGH->ID_SP);
+                }
             }
+
+            GioHang::where('ID_KH', $request->input('idKH'))->delete();
+
+            DB::commit();
+
+            $request->session()->flash('success', 'Order placed successfully.');
+            return true;
+        } catch (\Exception $err) {
+            DB::rollBack();
+            $request->session()->flash('error', $err->getMessage());
+            return false;
         }
-
-        return true;
-
     }
-
 }

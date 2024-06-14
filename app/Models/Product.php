@@ -40,6 +40,8 @@ class Product extends Model
         'anh7',
         'anh8',
         'anh9',
-        'anh10'
+        'anh10',
+        'soluong',
+        'daBan'
     ];
 }

@@ -228,53 +228,32 @@
 
                 <form method="POST" id="them_vao_Gio_Hang">
                     <div class="prod-skuwrap">
-                        <p class="prod-skuttl">Màu sắt</p>
+                        <p class="prod-skuttl">Màu sắc</p>
                         <ul class="prod-skucolor">
                             @foreach($loais as $loai)
-                                    <li  style="width: 100px; height: auto" >{{--onclick="choLoaiSP({{$loai->id}})"--}}
+                                    <li  style="width: 100px; height: auto" >
                                         <a href="/trangchu/sanpham/NDsanphan/{{$loai->id}}">
                                             <img style="width: 100%;" src="{{$loai->anh1}}" alt="">
-
-{{--                                            @if($SPs->anh1 != null)--}}
-{{--                                                        <img style="width: 100%;" src="{{$loai->anh1}}" alt="">--}}
-{{--                                            @endif--}}
-{{--                                            @if($SPs->anh2 != null)--}}
-{{--                                                        <img style="width: 100%;" src="{{$loai->anh2}}" alt="">--}}
-{{--                                            @endif--}}
-{{--                                            @if($SPs->anh3 != null)--}}
-{{--                                                        <img style="width: 100%;" src="{{$loai->anh3}}" alt="">--}}
-{{--                                            @endif--}}
-{{--                                            @if($SPs->anh4 != null)--}}
-{{--                                                        <img style="width: 100%;" src="{{$loai->anh4}}" alt="">--}}
-{{--                                            @endif--}}
-{{--                                            @if($SPs->anh5 != null)--}}
-{{--                                                        <img style="width: 100%;" src="{{$loai->anh5}}" alt="">--}}
-{{--                                            @endif--}}
-{{--                                            @if($SPs->anh6 != null)--}}
-{{--                                                        <img style="width: 100%;" src="{{$loai->anh6}}" alt="">--}}
-{{--                                            @endif--}}
-{{--                                            @if($SPs->anh7 != null)--}}
-{{--                                                        <img style="width: 100%;" src="{{$loai->anh7}}" alt="">--}}
-{{--                                            @endif--}}
-{{--                                            @if($SPs->anh8 != null)--}}
-{{--                                                        <img style="width: 100%;" src="{{$loai->anh8}}" alt="">--}}
-{{--                                            @endif--}}
-{{--                                            @if($SPs->anh9 != null)--}}
-{{--                                                        <img style="width: 100%;" src="{{$loai->anh9}}" alt="">--}}
-{{--                                            @endif--}}
-{{--                                            @if($SPs->anh10 != null)--}}
-{{--                                                        <img style="width: 100%;" src="{{$loai->anh10}}" alt="">--}}
-{{--                                            @endif--}}
                                         </a>
                                     </li>
                             @endforeach
                         </ul>
                         <input name="idSP_GH" id="idSP_GH" type="hidden" value="{{$SPs->id}}">
 
+                        <p class="prod-skuttl">Đã bán</p>
+                        <div class="offer-props-select">
+                            <input name="daBan" id="daBan" type="number" value="{{$SPs->daBan}}" style="width: 60px; height: 40px;" disabled>
+                        </div>
+
+                        <p class="prod-skuttl">Số lượng còn lại</p>
+                        <div class="offer-props-select">
+                            <input name="soluong" id="soluong" type="number" value="{{$SPs->soluong}}" style="width: 60px; height: 40px;" disabled>
+                        </div>
+
                         <p class="prod-skuttl">Sizes</p>
                         <div class="offer-props-select">
                             <select class="form-control"  name="sizeSP_KHcan" id="sizeSP_KHcan">
-                                <option value="-1" style=" color: red;">null</option>
+                                <option value="-1" style=" color: red;">Chọn</option>
 {{--                                @foreach($products_all as $products_size)--}}
                                     @if($SPs -> size1 != null)
                                         <option value="{{$SPs -> size1}}">{{$SPs -> size1}}</option>
@@ -297,6 +276,7 @@
 {{--                                @endforeach--}}
                             </select>
                         </div>
+
                     </div>
                     <div class="prod-info">
                         <p class="" style="width: auto; font-size: 20px;">
@@ -451,19 +431,19 @@
                         <li class="prod-rel-wrap clone" aria-hidden="true" style="width: 226px; margin-right: 0px; float: left; display: block;">
                             @foreach($SPTTs as $SPTT)
                                 <div class="prod-rel">
-                                    <a href="/trangchu/sanpham/NDsanphan/{{$SPTT->id}}" class="prod-rel-img">
-                                        <img src="{{$SPTT->anh1}}" alt="Maxime molestias necessitatibus nobis" draggable="false">
+                                    <a href="/trangchu/sanpham/NDsanphan/{{$SPTT['id']}}" class="prod-rel-img">
+                                        <img src="{{$SPTT['anh1']}}" alt="Maxime molestias necessitatibus nobis" draggable="false">
                                     </a>
                                     <div class="prod-rel-cont">
-                                        <h3><a href="/trangchu/sanpham/NDsanphan/{{$SPTT->id}}">{{$SPTT->name}}</a></h3>
+                                        <h3><a href="/trangchu/sanpham/NDsanphan/{{$SPTT['id']}}">{{$SPTT['name']}}</a></h3>
                                         <p class="prod-rel-price">
                                             <?php $return = true ?>
-                                            @if($return && $SPTT->money_sale > 0)
-                                                <b  class="item_current_price">{{number_format($SPTT->money_sale)}} đ</b>
+                                            @if($return && $SPTT['money_sale'] > 0)
+                                                <b  class="item_current_price">{{number_format($SPTT['money_sale'])}} đ</b>
                                                 <?php $return = false ?>
                                             @endif
                                             @if($return)
-                                                <b class="item_current_price">{{number_format($SPTT->money)}} đ</b>
+                                                <b class="item_current_price">{{number_format($SPTT['money'])}} đ</b>
                                             @endif
                                         </p>
                                     </div>

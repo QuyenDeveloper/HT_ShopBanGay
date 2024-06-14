@@ -9,6 +9,8 @@ use App\Models\Hdahuy;
 use App\Models\layhang;
 use App\Models\thongbao;
 use App\Models\xacNhanDH;
+use App\Models\Product;
+use App\Models\donmua;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
@@ -217,70 +219,18 @@ class donhangController extends Controller
     }
 
     public function huy_don($idDM){
-        try {
-            $xn = xacNhanDH::where('idDMua', '=', $idDM)->first();
-            $ngdung = User::where('id', '=', $xn->idKH)->first();
-
-            $tieude_admin = 'Đơn hàng "'.$idDM.'" đã được hủy';
-            $noidung_admin= '"'.$ngdung->name.'" đã hủy đơn hàng "'.$idDM.'"';
-//            dd($xn->idKH,$xn->idDMua,$xn->idDchi,$xn->loinhan,);
-
-            Hdahuy::create([
-                'idKH' => $xn->idKH,
-                'idDMua' => $xn->idDMua,
-                'idDchi' => $xn->idDchi,
-                'loinhan' => $xn->loinhan,
-            ]);
-            thongbao::create([
-                'idKH' => '1',
-                'idDM' => $idDM,
-                'tieude' => $tieude_admin,
-                'noidung' => $noidung_admin,
-                'daxem' => 'chưa',
-            ]);
-
-            xacNhanDH::where('idDMua', '=', $idDM)->delete();
-
-            Toastr::success($tieude_admin, 'Thành công', ["positionClass" => "toast-top-right"]);
+        if($this->donhangService->huyDonXacNhan($idDM)){
             return redirect()->route('don_mua5', ['idKH' => Auth::user()->id]);
-        }catch (\Exception $err){
-            Toastr::error('Đơn hàng chưa được hủy.', 'Không thành công', ["positionClass" => "toast-top-right"]);
+        }else{
             return redirect()->back();
         }
-
     }
     public function huy_don2($idDM){
-        try {
-            $xn = layhang::where('idDMua', '=', $idDM)->first();
-            $ngdung = User::where('id', '=', $xn->idKH)->first();
-
-            $tieude_admin = 'Đơn hàng "'.$idDM.'" đã được hủy';
-            $noidung_admin= '"'.$ngdung->name.'" đã hủy đơn hàng "'.$idDM.'"';
-//            dd($xn->idKH,$xn->idDMua,$xn->idDchi,$xn->loinhan,);
-
-            Hdahuy::create([
-                'idKH' => $xn->idKH,
-                'idDMua' => $xn->idDMua,
-                'idDchi' => $xn->idDchi,
-                'loinhan' => $xn->loinhan,
-            ]);
-            thongbao::create([
-                'idKH' => '1',
-                'idDM' => $idDM,
-                'tieude' => $tieude_admin,
-                'noidung' => $noidung_admin,
-                'daxem' => 'chưa',
-            ]);
-
-            layhang::where('idDMua', '=', $idDM)->delete();
-
-            Toastr::success($tieude_admin, 'Thành công', ["positionClass" => "toast-top-right"]);
+        if($this->donhangService->huyDonLayHang($idDM)){
             return redirect()->route('don_mua5', ['idKH' => Auth::user()->id]);
-        }catch (\Exception $err){
-            Toastr::error('Đơn hàng chưa được hủy.', 'Không thành công', ["positionClass" => "toast-top-right"]);
+        }else{
             return redirect()->back();
         }
-
     }
 
 }

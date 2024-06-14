@@ -55,15 +55,17 @@
         </tr>
         <tr>
             <th style="width: 1px;">ID</th>
-            <th>ảnh SP</th>
-            <th>Tên Sản Phẩm</th>
+            <th>Ảnh</th>
+            <th>Tên</th>
             <th>Doanh mục</th>
-            <th>thể loại</th>
+            <th>Thể loại</th>
             <th>Giá Gốc</th>
             <th>Giá khuyến mãi</th>
             <th>Nhãn hiệu</th>
 {{--            <th>Loại</th>--}}
             <th>Size</th>
+            <th>Tồn kho</th>
+            <th>Đã bán</th>
             <th>Active</th>
             <th>Updae</th>
             <th style="width: 100px;">&nbsp;</th>
@@ -73,7 +75,6 @@
         <tbody>
 
         @foreach($products as $key => $product)
-
             <tr>
                 <td>{{$product->id}}</td>
                 <td>
@@ -126,34 +127,6 @@
                 <td>{{$product->money}} VND</td>
                 <td>{{$product->money_sale}} VND</td>
                 <td>{{$product->nhanhieu}}</td>
-{{--                <td>--}}
-{{--                    <?php $cout = 0 ?>--}}
-{{--                    @if( $product->color1 != null)--}}
-{{--                            <?php $cout++ ?>--}}
-{{--                        <a href="{{$product->color1}}" target="_blank"><img style="width: 50px;" src="{{$product->color1}}" }></a>--}}
-{{--                    @endif--}}
-{{--                    @if( $product->color2 != null)--}}
-{{--                            <?php $cout++ ?>--}}
-{{--                        <a href="{{$product->color2}}" target="_blank"><img style="width: 50px;" src="{{$product->color2}}" }></a>--}}
-{{--                    @endif--}}
-{{--                    @if( $product->color3 != null)--}}
-{{--                            <?php $cout++ ?>--}}
-{{--                        <a href="{{$product->color3}}" target="_blank"><img style="width: 50px;" src="{{$product->color3}}" }></a>--}}
-{{--                    @endif--}}
-{{--                    @if( $product->color4 != null)--}}
-{{--                            <?php $cout++ ?>--}}
-{{--                        <a href="{{$product->color4}}" target="_blank"> <img style="width: 50px;" src="{{$product->color4}}" }></a>--}}
-{{--                    @endif--}}
-{{--                    @if( $product->color5 != null)--}}
-{{--                            <?php $cout++ ?>--}}
-{{--                        <a href="{{$product->color5}}" target="_blank"><img style="width: 50px;" src="{{$product->color5}}" }></a>--}}
-{{--                    @endif--}}
-{{--                    @if( $product->color6 != null)--}}
-{{--                            <?php $cout++ ?>--}}
-{{--                        <a href="{{$product->color6}}" target="_blank"><img style="width: 50px;" src="{{$product->color6}}" }></a>--}}
-{{--                    @endif--}}
-{{--                    {{$cout}} loại--}}
-{{--                </td>--}}
                 <td>
                     @if($product->size1 != null)
                         {{$product->size1 . " | "}}
@@ -173,6 +146,15 @@
                     @if($product->size6 != null)
                         {{$product->size6}}
                     @endif
+                </td>
+                <td>
+                    {{
+                    $product->soluong
+                    }}
+                </td><td>
+                    {{
+                    $product->daBan
+                    }}
                 </td>
                 <td>{{
                     $product->active == 0 ? 'NO' : 'YES'

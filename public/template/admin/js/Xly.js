@@ -1,23 +1,5 @@
 
 
-
-// function pT(i, st, url){
-//     $.ajax({
-// Loại gửi dữ liệu (POST hoặc GET)
-// type: 'get',
-// URL Tiếp nhận, xử lý và gửi lại dữ liệu
-// url: url,
-// { Các biến dữ liệu được gửi lên server.(ten_bien1:dữliệu,ten_bien2:dữliệu,...). Có thể sử dụng  var data = $('form#ID_form').serialize(); để lấy toàn bộ dữ liệu từ 1 form có id là ID_form},
-// data: { i },
-// Kiểu dữ liệu trả về ('html','text','json','xml')
-// dataType: 'html',
-
-// success: function(html) {
-// Nội dung sẽ được thực thi sau khi nhận được dữ liệu từ server
-// }
-//     });
-// }
-
 function themVaoGioHang(){
     // var data = $('form#them_vao_Gio_Hang').serialize();
 
@@ -54,42 +36,29 @@ function themVaoGioHang(){
     });
 }
 
-function themVaoGioHang2(idSP, sizeSPKHcan, SLSPKHcan){//idKH,
+function themVaoGioHang2(idSP, sizeSPKHcan, SLSPKHcan){
     var data = $('form#them_vao_Gio_Hang').serialize();
 
-    // var idKH = $('#idKH_GH').val();
-    // var idSP = $('#idSP_GH').val();
     var size = '#'+sizeSPKHcan;
     var SL = '#'+SLSPKHcan;
     var sizeSP_KHcan = $(size).val();
     var SLSP_KHcan = $(SL).val();
     $.ajax({
-        // Loại gửi dữ liệu (POST hoặc GET)
         type: 'post',
-        // URL Tiếp nhận, xử lý và gửi lại dữ liệu
         url: '/trangchu/sanpham/them_gio_hang',
-        // { Các biến dữ liệu được gửi lên server.(ten_bien1:dữliệu,ten_bien2:dữliệu,...). Có thể sử dụng  var data = $('form#ID_form').serialize(); để lấy toàn bộ dữ liệu từ 1 form có id là ID_form},
         data: { idSP, sizeSP_KHcan, SLSP_KHcan },
-        // Kiểu dữ liệu trả về ('html','text','json','xml')
         dataType: 'json',
 
         success: function(results) {
-            // Nội dung sẽ được thực thi sau khi nhận được dữ liệu từ server
             if (results.error === false) {
-                // alert(results.message);
-                // load lại trang
-                // location.reload();
                 toastr["success"]("Hãy kiểm tra giỏ hàng của mình!", "Thành công")
             }else{
                 toastr["error"]("Chưa chọn Size cho sản phẩm!", "Không thành công")
-                // alert(results.message);
-                // alert('Có thể bạn chưa chọn Size!');
             }
         }
     });
 }
 
-// document.getElementById('themVaoyeuthich1').onclick = function () {
 function themVaoyeuthich(idKH, idSP){
 //     document.getElementById('themVaoyeuthich1').style.display = "none";
 //     var idKH = $('#idKH_GH').val();
@@ -210,40 +179,6 @@ function xoayeuthich2(idKH, idSP){
     });
 }
 
-// function themVaoGioHang2(idsp, idkh){
-//     var from = '"'+'#' + idsp +'"';
-//
-//     alert(data);
-//     var idKH = idkh;
-//     var idSP = idsp;
-//     var sizeSP_KHcan = document.getElementById(idsp).value;
-//     alert(sizeSP_KHcan);
-//     var SLSP_KHcan = document.querySelector(SL).value;
-//     $.ajax({
-//         // Loại gửi dữ liệu (POST hoặc GET)
-//         type: 'post',
-//         // URL Tiếp nhận, xử lý và gửi lại dữ liệu
-//         url: '/trangchu/sanpham/them_gio_hang',
-//         // { Các biến dữ liệu được gửi lên server.(ten_bien1:dữliệu,ten_bien2:dữliệu,...). Có thể sử dụng  var data = $('form#ID_form').serialize(); để lấy toàn bộ dữ liệu từ 1 form có id là ID_form},
-//         data: { idKH, idSP, sizeSP_KHcan, SLSP_KHcan },
-//         // Kiểu dữ liệu trả về ('html','text','json','xml')
-//         dataType: 'json',
-//
-//         success: function(results) {
-//         // Nội dung sẽ được thực thi sau khi nhận được dữ liệu từ server
-//             if (results.error === false) {
-//                 alert(results.message);
-//                 // load lại trang
-//                 location.reload();
-//                 alert(results.message);
-//             }else{
-//                 alert(results.message);
-//                 alert('Kiểm tra xem bạn đã chọn Size chưa!!');
-//             }
-//         }
-//     });
-// }
-
 function updateSL(idSPGH, SL){
     var SL = '#'+SL;
     var SLSP_KHcan = $(SL).val();
@@ -303,57 +238,3 @@ function xoaSPGH(id){
         }
     });
 }
-
-// function xoaDC(id){
-//     $.ajax({
-//         // Loại gửi dữ liệu (POST hoặc GET)
-//         type: 'POST',
-//         // URL Tiếp nhận, xử lý và gửi lại dữ liệu
-//         url: '/trangchu/tai_khoan/xoaDC',
-//         // { Các biến dữ liệu được gửi lên server.(ten_bien1:dữliệu,ten_bien2:dữliệu,...). Có thể sử dụng  var data = $('form#ID_form').serialize(); để lấy toàn bộ dữ liệu từ 1 form có id là ID_form},
-//         data: { id },
-//         // Kiểu dữ liệu trả về ('html','text','json','xml')
-//         dataType: 'json',
-//
-//         success: function(results) {
-//             if (results.error === false) {
-//                 // alert(results.message);
-//                 location.reload();
-//                 toastr["success"]("Xóa thành công địa chỉ!", "Thành công")
-//             }else{
-//                 location.reload();
-//                 toastr["error"]("Xóa không thành công!", "Không thành công")
-//                 // alert('Kiểm tra xem bạn đã chọn Size chưa!!');
-//             }
-//         }
-//     });
-// }
-
-
-// $('#SLSP_KH').change(function () {
-//
-//     var idKH = $('#idKH_GH').val();
-//     var SLSP_KHcan = $('#SLSP_KH').val();
-//     $.ajax({
-//         // Loại gửi dữ liệu (POST hoặc GET)
-//         type: 'POST',
-//         // URL Tiếp nhận, xử lý và gửi lại dữ liệu
-//         url: '/trangchu/sanpham/gio_hang/updateSL',
-//         // { Các biến dữ liệu được gửi lên server.(ten_bien1:dữliệu,ten_bien2:dữliệu,...). Có thể sử dụng  var data = $('form#ID_form').serialize(); để lấy toàn bộ dữ liệu từ 1 form có id là ID_form},
-//         data: { idKH, idSP, sizeSP_KHcan, SLSP_KHcan },
-//         // Kiểu dữ liệu trả về ('html','text','json','xml')
-//         dataType: 'json',
-//
-//         success: function(results) {
-//             if (results.error === false) {
-//                 // alert(results.message);
-//                 location.reload();
-//                 // alert(results.message);
-//             }else{
-//                 location.reload();
-//                 // alert(results.message);
-//                 // alert('Kiểm tra xem bạn đã chọn Size chưa!!');
-//             }
-//         }
-//     });
-// });

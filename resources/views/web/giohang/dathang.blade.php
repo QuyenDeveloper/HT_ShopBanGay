@@ -99,8 +99,6 @@
                                 @endif
                                 <li><a href="/trangchu/logout"><i class="fa fa-sign-out" aria-hidden="true"></i><span class="shop-menu-ttl"> Đăng xuất </span></a></li>
                             @endif
-
-
                         </ul>
                     </li>
                 </ul>
@@ -285,11 +283,11 @@
                                             @if($khoSP->id == $sanpham->ID_SP)
                                                 <?php $return = true ?>
                                                 @if($return && $khoSP->money_sale > 0)
-                                                    <p>{{$khoSP->money_sale}} đ</p>
+                                                    <p>{{number_format($khoSP->money_sale)}} đ</p>
                                                     <?php $return = false ?>
                                                 @endif
                                                 @if($return)
-                                                    <p>{{$khoSP->money}} đ</p>
+                                                    <p>{{number_format($khoSP->money)}} đ</p>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -313,7 +311,7 @@
                                                 }
 
                                                 ?>
-                                                <b>{{$gia}} đ</b>
+                                                <b>{{number_format($gia)}} đ</b>
                                                 <?php $giaTC = $giaTC + $gia ?>
                                             @endif
                                         @endforeach

@@ -87,11 +87,11 @@
                                     @if($khoSP->id == $sanpham->ID_SP)
                                         <?php $return = true ?>
                                         @if($return && $khoSP->money_sale > 0)
-                                            <p>{{$khoSP->money_sale}} đ <br> <strike style="color: red;">{{$khoSP->money}} đ</strike></p>
+                                            <p>{{number_format($khoSP->money_sale)}} đ <br> <strike style="color: red;">{{$khoSP->money}} đ</strike></p>
                                             <?php $return = false ?>
                                         @endif
                                         @if($return)
-                                            <p>{{$khoSP->money}} đ</p>
+                                            <p>{{number_format($khoSP->money)}} đ</p>
                                         @endif
                                     @endif
                                 @endforeach
@@ -121,7 +121,7 @@
                                             }
 
                                         ?>
-                                        <b>{{$gia}} đ</b>
+                                        <b>{{number_format($gia)}} đ</b>
                                         <?php $giaTC = $giaTC + $gia ?>
                                     @endif
                                 @endforeach
@@ -151,7 +151,7 @@
 {{--                    </script>--}}
                 </div>
                 <ul class="cart-total">
-                    <li class="cart-summ">TỔNG CỘNG: <b>{{$giaTC}} đ</b></li>
+                    <li class="cart-summ">TỔNG CỘNG: <b>{{number_format($giaTC)}} đ</b></li>
                 </ul>
                 <div class="cart-submit">
 {{--                    <div class="cart-coupon">--}}
