@@ -78,8 +78,8 @@ class ProductSimilarity
 
     protected function calculateSimilarityScore($productA, $productB)
     {
-        $productAFeatures = implode('', explode('\n',$productA['dattrung']));
-        $productBFeatures = implode('', explode('\n',$productB['dattrung']));
+        $productAFeatures = implode('', explode('\n',$productA['content']));
+        $productBFeatures = implode('', explode('\n',$productB['content']));
         // Log::info('My productAFeatures', ['productAFeatures' => $productAFeatures]);
         // Log::info('My productBFeatures', ['productBFeatures' => $productBFeatures]);
 

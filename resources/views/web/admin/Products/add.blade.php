@@ -12,7 +12,6 @@
         <form action="" method="post">
             <div class="card-body">
 
-{{--                @include('admin.alert')--}}
             <div class="row">
                 <div class="form-group col-sm-6">
                     <label for="menu">Tên Sản Phẩm</label>
@@ -20,31 +19,13 @@
                 </div>
 
                 <div class=" col-sm-3">
-{{--                    <label  >Doanh Mục</label>--}}
-{{--                    <select class="form-control"  name="menu_name" >--}}
-{{--                        <option value="-1">Null</option>--}}
-{{--                        @foreach ($menus as $menu)--}}
-{{--                            <option value="{{$menu -> id}}">{{$menu -> name}}</option>--}}
-{{--                        @endforeach--}}
-{{--                    </select>--}}
                     <label for=""> Doanh Mục</label>
-{{--                    @foreach ($menus as $menu)--}}
-{{--                    <div class="form-check form-checkbox">--}}
-{{--                        <input class="form-control-input" value="{{$menu -> name}}" type="checkbox" id="{{$menu -> name}}" name="menu_name{{$menu -> id}}" >--}}
-{{--                        <label for="{{$menu -> name}}" class="form-check-label">{{$menu -> name}}</label>--}}
-{{--                    </div>--}}
                         <select class="form-control"  name="menu_name1" >
                             <option value="-1">Null</option>
                             @foreach ($menus as $menu)
                                 <option value="{{$menu -> name}}">{{$menu -> name}}</option>
                             @endforeach
                         </select>
-{{--                    @endforeach--}}
-
-{{--                    <div class="form-check form-radio">--}}
-{{--                        <input class="form-control-input" value="0" type="radio" id="no_active" name="active" >--}}
-{{--                        <label for="no_active" class="form-check-label">Không</label>--}}
-{{--                    </div>--}}
                 </div>
                 <div class=" col-sm-3">
                         <label  >Thể Loại</label>
@@ -106,16 +87,13 @@
 
                 <div class="form-group">
                     <label  >Mô Tả Chi Tiết</label>
-                    <textarea name="content" id="content" class="form-control" style="height: 300px">
-                        {{old('content')}}
-                    </textarea>
+                    <textarea name="content" id="content" class="form-control" style="height: 300px">{{old('content')}}</textarea>
                 </div>
 
                 <div class="form-group ">
                     <label class="" >Ảnh Sản Phẩm(tối đa 10 ảnh)</label>
 
                     <div class="row">
-                        {{-- <input type="file" class="form-check col-sm-auto" id="upload1"> --}}
                         <input type="file" class="form-check col-sm-auto" id="upload1" accept="image/*">
                         <a href="#"
                            onclick="xoaAnh1()"

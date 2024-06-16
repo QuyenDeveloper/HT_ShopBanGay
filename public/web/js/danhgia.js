@@ -14,3 +14,4 @@ function danhgia(rating) {
     // Set the value of DGiaSao input field
     document.getElementById('danhgia').value = rating;
 }
+

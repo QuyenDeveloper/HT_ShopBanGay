@@ -50,7 +50,7 @@
                         @if($SPs->anh1 != null)
                             <li>
                                 <a data-fancybox-group="product" class="fancy-img" href="{{$SPs->anh1}}">
-                                    <img class="xzoom" id="xzoom-default" src="{{$SPs->anh1}}" alt="">
+                                    <img class="xzoom" id="xzoom-default" src="{{$SPs->anh1}}" alt="" >
                                 </a>
                             </li>
                         @endif
