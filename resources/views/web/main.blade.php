@@ -14,10 +14,10 @@
         <div class="container">
             <ul class="contactinfo nav nav-pills">
                 <li>
-                    <i class='fa fa-phone'></i> +64 385664736
+                    <i class='fa fa-phone'></i> +899631628
                 </li>
                 <li>
-                    <i class="fa fa-envelope"></i> admin@localhost.com
+                    <i class="fa fa-envelope"></i> allstore.da3.qn@gmail.com
                 </li>
             </ul>
             <!-- Social links -->
@@ -277,33 +277,16 @@
 {{--                            </li>--}}
 {{--                        </ul>--}}
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="/trangchu/cacYeuTo">
                             CÁC YẾU TỐ
                         </a>
-                    </li>
-                    <li class="menu-item-has-children">
+                    </li> --}}
+                    {{-- <li class="menu-item-has-children">
                         <a href="/trangchu/blog">
-                            Blog {{-- <i class="fa fa-angle-down"></i>--}}
+                            Blog
                         </a>
-{{--                        <ul class="sub-menu">--}}
-{{--                            <li>--}}
-{{--                                <a href="blog.html">--}}
-{{--                                    Blog - Style 1--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <a href="blog-2.html">--}}
-{{--                                    Blog - Style 2--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <a href="post.html">--}}
-{{--                                    Single Post--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-                    </li>
+                    </li> --}}
                     <li class="menu-item-has-children">
                         <a  class="trang">
                             TRANG <i class="fa fa-angle-down"></i>

@@ -65,12 +65,12 @@
                                 @endif
                             </div>
                             <h3>
-                                <a href="/trangchu/sanpham/NDsanphan/{{$phukien->id}}">{{$phukien->name}}</a>
+                                <a href="/trangchu/sanpham/NDsanphan/{{$phukien->id}}">{!! \App\Helpers\Helper::truncateText($phukien->name,50) !!}</a>
                             </h3>
                             <p class="prod-i-price">
                                 <?php $return = true ?>
                                 @if($return && $phukien->money_sale > 0)
-                                    <center><p>{{$phukien->money_sale}} đ - <strike style="color: red;">{{$phukien->money}} đ</strike></p></center>
+                                    <center><p>{{number_format($phukien->money_sale,0,',','.')}} đ - <strike style="color: red;">{{number_format($phukien->money,0,',','.')}} đ</strike></p></center>
                             <?php $return = false ?>
                             @endif
                             @if($return)

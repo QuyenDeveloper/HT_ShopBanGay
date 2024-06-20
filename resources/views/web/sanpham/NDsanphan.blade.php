@@ -3,8 +3,33 @@
 
 
 @section('content')
+<style>
+    .star-rating {
+        position: relative;
+        display: inline-block;
+        font-size: 0; /* Remove the gap between inline-block elements */
+    }
 
-    <!-- Main Content - start -->
+    .star-rating .fa-star {
+        font-size: 24px; /* Adjust this size as needed */
+        color: #ccc; /* Color for unfilled stars */
+    }
+
+    .star-rating .star-rating-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .star-rating .star-rating-fill .fa-star {
+        color: #f5a623; /* Color for filled stars */
+        position: relative;
+        z-index: 1;
+    }
+</style>
 <main>
     <section class="container">
         <ul class="b-crumbs">
@@ -32,7 +57,7 @@
             </li>
             <li>
                 <a>
-                    {{$SPs->name}}
+                    {!! \App\Helpers\Helper::truncateText($SPs->name,40) !!}
                 </a>
             </li>
 
@@ -209,37 +234,30 @@
                             <a id="themVaoyeuthich2"  href="#" onclick="xoayeuthich('{{Auth::user()->id}}', '{{$SPs->id}}')" class="prod-favorites"><i class="fa fa-heart" style="color: black;"></i>Yêu thích</a>
                         @endif
                     </span>
-                   {{-- <span >
-                       <a href="#" class="prod-compare"><i class="fa fa-bar-chart"></i> So sánh</a>
-                       <a  style="display: none;" href="#" class="prod-compare"><i style="color: black;" class="fa fa-bar-chart"></i> So sánh</a>
-                   </span> --}}
                 </p>
-{{--                <script language="javascript">--}}
-{{--                    document.getElementById('themVaoyeuthich1').onclick = function () {--}}
-{{--                        document.getElementById('themVaoyeuthich1').style.display = "none";--}}
-{{--                        document.getElementById('themVaoyeuthich2').style.display = "block";--}}
-{{--                    };--}}
-{{--                    document.getElementById('btn2').onclick = function () {--}}
-{{--                        document.getElementById('ID_SP_GH').checked = false;--}}
-{{--                        document.getElementById('btn2').style.display = "none";--}}
-{{--                        document.getElementById('btn1').style.display = "block";--}}
-{{--                    };--}}
-{{--                </script>--}}
 
                 <form method="POST" id="them_vao_Gio_Hang">
                     <div class="prod-skuwrap">
-                        <p class="prod-skuttl">Màu sắc</p>
-                        <ul class="prod-skucolor">
-                            @foreach($loais as $loai)
-                                    <li  style="width: 100px; height: auto" >
-                                        <a href="/trangchu/sanpham/NDsanphan/{{$loai->id}}">
-                                            <img style="width: 100%;" src="{{$loai->anh1}}" alt="">
-                                        </a>
-                                    </li>
-                            @endforeach
-                        </ul>
+                        <p class="prod-skuttl">Đánh giá</p>
+                        <div class="star-rating" data-rating="{{ $Rating }}">
+                            <div class="star-rating-fill" style="width: 0%;">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+
+                        <br>
                         <input name="idSP_GH" id="idSP_GH" type="hidden" value="{{$SPs->id}}">
 
+                        <br>
                         <p class="prod-skuttl">Đã bán</p>
                         <div class="offer-props-select">
                             <input name="daBan" id="daBan" type="number" value="{{$SPs->daBan}}" style="width: 60px; height: 40px;" disabled>
@@ -282,32 +300,23 @@
                         <p class="" style="width: auto; font-size: 20px;">
                                 <?php $return = true ?>
                                 @if($return && $SPs->money_sale > 0)
-                                    <b  class="item_current_price">{{number_format($SPs->money_sale)}} đ - <strike style="color: red;">{{$SPs->money}} đ</strike></b>
+                                    <b  class="item_current_price">{{number_format($SPs->money_sale,0,',','.')}} đ - <strike style="color: red;">{{number_format($SPs->money,0,',','.')}} đ</strike></b>
                                 <?php $return = false ?>
                                 @endif
                                 @if($return)
-                                    <b class="item_current_price">{{number_format($SPs->money)}} đ</b>
+                                    <b class="item_current_price">{{number_format($SPs->money,0,',','.')}} đ</b>
                                 @endif
                         </p>
                         <p class="prod-qnt">
                             <input name="SLSP_GH" id="SLSP_GH" type="number" value="1" style="width: 60px; height: 40px">
-{{--                            <a href="#" class="prod-plus"><i class="fa fa-angle-up"></i></a>--}}
-{{--                            <a href="#" class="prod-minus"><i class="fa fa-angle-down"></i></a>--}}
                         </p>
                         <p class="prod-addwrap">
                             <input type="hidden" name="idKH_GH" id="idKH_GH" value="{{Auth::user()->id}}">
-{{--                            <script>--}}
-{{--                                var idKH_SP = $('#idKH_SP').val();--}}
-{{--                                var idLoaiSP = $('#idLoaiSP').val();--}}
-{{--                                var sizeSP_KHcan = $('#sizeSP_KHcan').val();--}}
-{{--                                var SLSP_KH = $('#SLSP_KH').val();--}}
-{{--                                idKH_SP, idLoaiSP, sizeSP_KHcan, SLSP_KH--}}
-{{--                            </script>--}}
                             <a href="#" onclick="themVaoGioHang()" class="prod-add " rel="nofollow">Thêm vào giỏ hàng</a>
                         </p>
                     </div>
                 </form>
-                <ul class="prod-i-props">
+                {{-- <ul class="prod-i-props">
                     <?php
                     $dattrungs = explode(";", $SPs->dattrung);
                     ?>
@@ -316,14 +325,14 @@
                                     <b>{{$dattrung}}</b>
                             </li>
                         @endforeach
-                </ul>
+                </ul> --}}
             </div>
 
             <!-- Product Tabs -->
             <div class="prod-tabs-wrap">
                 <ul class="prod-tabs">
                     <li><a data-prodtab-num="1" class="active" href="#" data-prodtab="#prod-tab-1">Miêu tả</a></li>
-                    <li><a data-prodtab-num="2" id="prod-props" href="#" data-prodtab="#prod-tab-2">đặt trưng</a></li>
+                    {{-- <li><a data-prodtab-num="2" id="prod-props" href="#" data-prodtab="#prod-tab-2">đặt trưng</a></li> --}}
                     <li><a data-prodtab-num="3" href="#" data-prodtab="#prod-tab-3">nhận xét</a></li>
                 </ul>
                 <div class="prod-tab-cont">
@@ -331,11 +340,11 @@
                     <p data-prodtab-num="1" class="prod-tab-mob active" data-prodtab="#prod-tab-1">Description</p>
                     <div class="prod-tab stylization" id="prod-tab-1">
                         <p>
-                            {{$SPs->content}}
+                            {!! nl2br(e($SPs->content)) !!}
                         </p>
                     </div>
 
-                    <p data-prodtab-num="2" class="prod-tab-mob" data-prodtab="#prod-tab-2">Features</p>
+                    {{-- <p data-prodtab-num="2" class="prod-tab-mob" data-prodtab="#prod-tab-2">Features</p>
                     <div class="prod-tab prod-props" id="prod-tab-2">
                         <table>
 
@@ -357,7 +366,7 @@
 
                             </tbody>
                         </table>
-                    </div>
+                    </div> --}}
 
                     <p data-prodtab-num="3" class="prod-tab-mob" data-prodtab="#prod-tab-3">Reviews (3)</p>
                     <div class="prod-tab" id="prod-tab-3">
@@ -365,14 +374,14 @@
                             @foreach ($Comments as $Comment)
                                 <li class="reviews-i existimg">
                                     <div class="reviews-i-img">
-                                        <img src="http://placehold.it/120x120" alt="{{ $Comment->user->name }}" style="background-image: url('{{ $Comment->user->avt ? $Comment->user->avt : '/web/imgs/pixlr-bg-result.png' }}')">
+                                        <img src="{{ $Comment->user->avt ? $Comment->user->avt : 'http://placehold.it/120x120' }}" alt="{{ $Comment->user->name }}">
 
                                         <div class="reviews-i-rating">
                                             @for ($i = 0; $i < 5; $i++)
-                                                @if ($i < $Comment->dang_gia)
+                                                @if ($i < $Comment->danhgia)
                                                     <i class="fa fa-star"></i>
                                                 @else
-                                                    <i class="fa fa-star-o"></i> <!-- Empty star for ratings less than 5 -->
+                                                    <i class="fa fa-star-o"></i>
                                                 @endif
                                             @endfor
                                         </div>
@@ -386,7 +395,7 @@
                                     </div>
                                     <div class="reviews-i-answer">
                                         <p>Thanks for your feedback!<br>
-                                            Nostrum voluptate autem, eaque mollitia sed rem cum amet qui repudiandae libero quaerat veniam accusantium architecto minima impedit. Magni illo illum iure tempora vero explicabo, esse dolores rem at dolorum doloremque iusto laboriosam repellendus. <br>Numquam eius voluptatum sint modi nihil exercitationem dolorum asperiores maiores provident repellat magnam vitae, consequatur omnis expedita, accusantium voluptas odit id.</p>
+                                            </p>
                                         <span class="reviews-i-margin"></span>
                                     </div>
                                 </li>
@@ -439,11 +448,11 @@
                                         <p class="prod-rel-price">
                                             <?php $return = true ?>
                                             @if($return && $SPTT['money_sale'] > 0)
-                                                <b  class="item_current_price">{{number_format($SPTT['money_sale'])}} đ</b>
+                                                <b  class="item_current_price">{{number_format($SPTT['money_sale'],0,',','.')}} đ</b>
                                                 <?php $return = false ?>
                                             @endif
                                             @if($return)
-                                                <b class="item_current_price">{{number_format($SPTT['money'])}} đ</b>
+                                                <b class="item_current_price">{{number_format($SPTT['money'],0,',','.')}} đ</b>
                                             @endif
                                         </p>
                                     </div>
@@ -453,25 +462,6 @@
                         </li>
                     </ul>
                 </div>
-{{--                <ol class="flex-control-nav flex-control-paging">--}}
-{{--                    <li>--}}
-{{--                        <a href="#" class="flex-active">1</a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a href="#">2</a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a href="#">3</a>--}}
-{{--                    </li>--}}
-{{--                </ol>--}}
-{{--                <ul class="flex-direction-nav">--}}
-{{--                    <li class="flex-nav-prev">--}}
-{{--                        <a class="flex-prev" href="#">Previous</a>--}}
-{{--                    </li>--}}
-{{--                    <li class="flex-nav-next">--}}
-{{--                        <a class="flex-next" href="#">Next</a>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
             </div>
         </div>
         <!-- Related Products - end -->

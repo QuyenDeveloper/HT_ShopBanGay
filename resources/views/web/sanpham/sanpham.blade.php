@@ -186,8 +186,6 @@
                         ?>
                             <li><a href="/trangchu/sanpham/{{$duoidan}}?page={{$i}}">{{$i}}</a></li>
                         <?php } ?>
-
-    {{--                    <li class="pagi-next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>--}}
                     </ul>
                 <div id="TT"></div>
                 </center>

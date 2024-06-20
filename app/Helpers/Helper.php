@@ -44,4 +44,10 @@ class Helper{
         return $active == 0 ? '<span class="btn btn-danger btn-xs">NO</span>':
                             '<span class="btn btn-success btn-xs">YES</span>'; ;
     }
+    public static function truncateText($text, $limit)
+    {
+        if (strlen($text) > $limit) {
+            return substr($text, 0, $limit) . '...';
+        }
+    }
 }

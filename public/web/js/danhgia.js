@@ -15,3 +15,16 @@ function danhgia(rating) {
     document.getElementById('danhgia').value = rating;
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    const starRatingElement = document.querySelector('.star-rating');
+    const rating = parseFloat(starRatingElement.getAttribute('data-rating'));
+
+    function setStarRating(rating) {
+        const maxRating = 5;
+        const ratingPercentage = (rating / maxRating) * 100;
+        const starRatingFill = document.querySelector('.star-rating .star-rating-fill');
+        starRatingFill.style.width = ratingPercentage + '%';
+    }
+
+    setStarRating(rating);
+});

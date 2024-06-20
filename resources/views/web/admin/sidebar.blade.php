@@ -97,7 +97,7 @@
                 <a href="#" class="nav-link">
                     <i class="fa fa-globe" aria-hidden="true"></i>
                     <p>
-                        Nhãn hiệu
+                        Thương hiệu
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
@@ -105,13 +105,13 @@
                     <li class="nav-item">
                         <a href="/trangchu/admin/nhanhieu/add" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Thêm nhãn hiệu</p>
+                            <p>Thêm thương hiệu</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="/trangchu/admin/nhanhieu/list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Danh Sách nhãn hiệu</p>
+                            <p>Danh sách thương hiệu</p>
                         </a>
                     </li>
 

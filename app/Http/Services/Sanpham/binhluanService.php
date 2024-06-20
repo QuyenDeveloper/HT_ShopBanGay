@@ -6,7 +6,11 @@ class binhluanService
 {
     public function getBinhLuanByID($productID){
         return binhluanSanpham::where("idSP", $productID);
-    }public function insert($request){
+    }
+    public function getRating($productID){
+        return binhluanSanpham::where("idSP", $productID)->count() ? (binhluanSanpham::where("idSP", $productID)->sum('danhgia') / binhluanSanpham::where("idSP", $productID)->count()) : 5;
+    }
+    public function insert($request){
 
         try {
             $data = $request->except('_token');

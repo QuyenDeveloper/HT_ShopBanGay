@@ -20,11 +20,11 @@
 {{--							<b>$59</b>--}}
                             <?php $return = true ?>
                             @if($return && $product->money_sale > 0)
-                                <p>{{number_format($product->money_sale)}} đ - <strike style="color: red;"><del>{{number_format($product->money)}} đ</del></strike></p>
+                                <p>{{number_format($product->money_sale,0,',','.')}} đ - <strike style="color: red;"><del>{{number_format($product->money,0,',','.')}} đ</del></strike></p>
                                 <?php $return = false ?>
                             @endif
                             @if($return)
-                                <p>{{number_format($product->money)}} đ</p>
+                                <p>{{number_format($product->money,0,',','.')}} đ</p>
                             @endif
 					</span>
                     </div>

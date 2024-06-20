@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Log;
 class ProductSimilarity
 {
     protected $products       = [];
-    protected $featureWeight  = 1;
+    protected $featureWeight  = 2;
     protected $priceWeight    = 1;
-    protected $categoryWeight = 2;
+    protected $categoryWeight = 1;
     protected $priceHighRange = 1000;
 
     public function __construct(array $products)
@@ -80,8 +80,6 @@ class ProductSimilarity
     {
         $productAFeatures = implode('', explode('\n',$productA['content']));
         $productBFeatures = implode('', explode('\n',$productB['content']));
-        // Log::info('My productAFeatures', ['productAFeatures' => $productAFeatures]);
-        // Log::info('My productBFeatures', ['productBFeatures' => $productBFeatures]);
 
         return array_sum([
             (Similarity::hamming($productAFeatures, $productBFeatures) * $this->featureWeight),

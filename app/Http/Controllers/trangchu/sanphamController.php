@@ -87,14 +87,14 @@ class sanphamController extends Controller
         if(Auth::user() == null) return redirect()->route('login')->with([
             'title' => 'Đăng nhập '
         ]);
-
         return view('web.sanpham.NDsanphan',[
             'title'=>'Chi tiết sản phẩm',
             'SPs' => $idSP,
             'yeuthichs' => $this->sanphamService->getyeuthich(Auth::user()->id, $idSP->id),
             'loais' => $this->sanphamService->getCLoai($idSP->name),
             'SPTTs' => $paginate,
-            'Comments' => $this->binhluanService->getBinhLuanByID($selectedId)->paginate(4)
+            'Comments' => $this->binhluanService->getBinhLuanByID($selectedId)->paginate(4),
+            'Rating' => $this->binhluanService->getRating($selectedId)
         ]);
     }
 

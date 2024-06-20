@@ -21,7 +21,7 @@
                 <div class=" col-sm-3">
                     <label for=""> Doanh Mục</label>
                         <select class="form-control"  name="menu_name1" >
-                            <option value="-1">Null</option>
+                            <option value="-1">Chọn</option>
                             @foreach ($menus as $menu)
                                 <option value="{{$menu -> name}}">{{$menu -> name}}</option>
                             @endforeach
@@ -30,7 +30,7 @@
                 <div class=" col-sm-3">
                         <label  >Thể Loại</label>
                         <select class="form-control"  name="theloai" >
-                            <option value="-1">Null</option>
+                            <option value="-1">Chọn</option>
                             @foreach ($theloais as $theloai)
                                 <option value="{{$theloai -> name}}">{{$theloai -> name}}</option>
                             @endforeach
@@ -53,7 +53,7 @@
                 <div class="form-group col-sm-8">
                     <label  >Thương hiệu</label>
                     <select class="form-control"  name="nhanhieu" >
-                        <option value="-1">Null</option>
+                        <option value="-1">Chọn</option>
                         @foreach ($nhanhieus as $nhanhieu)
                             <option value="{{$nhanhieu -> name}}">{{$nhanhieu -> name}}</option>
                         @endforeach
@@ -80,9 +80,7 @@
 
                 <div class="form-group">
                     <label  >Đặt trưng</label>
-                    <textarea name="dattrung"  class="form-control">
-                        {{old('description')}}
-                    </textarea>
+                    <textarea name="dattrung"  class="form-control">0{{old('description')}}</textarea>
                 </div>
 
                 <div class="form-group">
@@ -94,123 +92,113 @@
                     <label class="" >Ảnh Sản Phẩm(tối đa 10 ảnh)</label>
 
                     <div class="row">
+                        <div class="form-check" id="image_show1"></div>
+                        <input type="hidden" name="anh1" id="anh1">
                         <input type="file" class="form-check col-sm-auto" id="upload1" accept="image/*">
                         <a href="#"
                            onclick="xoaAnh1()"
                            style="color: red" class="col-sm-1">Xóa ảnh</a>
                     </div>
-                    <br>
-                    <div class="form-check" id="image_show1">
-                    </div>
-                    <input type="hidden" name="anh1" id="anh1">
+
                     <br>
 
                     <div class="row">
+                        <div class="form-check" id="image_show2">
+                        </div>
+                        <input type="hidden" name="anh2" id="anh2">
                         <input type="file" class="form-check col-sm-auto" id="upload2">
                         <a href="#"
                            onclick="xoaAnh2()"
                            style="color: red" class="col-sm-1">Xóa ảnh</a>
                     </div>
                     <br>
-                    <div class="form-check" id="image_show2">
-                    </div>
-                    <input type="hidden" name="anh2" id="anh2">
-                    <br>
 
                     <div class="row">
+                        <div class="form-check" id="image_show3">
+                        </div>
+                        <input type="hidden" name="anh3" id="anh3">
                         <input type="file" class="form-check col-sm-auto" id="upload3">
                         <a href="#"
                            onclick="xoaAnh3()"
                            style="color: red" class="col-sm-1">Xóa ảnh</a>
                     </div>
                     <br>
-                    <div class="form-check" id="image_show3">
-                    </div>
-                    <input type="hidden" name="anh3" id="anh3">
-                    <br>
 
                     <div class="row">
+                        <div class="form-check" id="image_show4">
+                        </div>
+                        <input type="hidden" name="anh4" id="anh4">
                         <input type="file" class="form-check col-sm-auto" id="upload4">
                         <a href="#"
                            onclick="xoaAnh4()"
                            style="color: red" class="col-sm-1">Xóa ảnh</a>
                     </div>
                     <br>
-                    <div class="form-check" id="image_show4">
-                    </div>
-                    <input type="hidden" name="anh4" id="anh4">
-                    <br>
 
                     <div class="row">
+                        <div class="form-check" id="image_show5">
+                        </div>
+                        <input type="hidden" name="anh5" id="anh5">
                         <input type="file" class="form-check col-sm-auto" id="upload5">
                         <a href="#"
                            onclick="xoaAnh5()"
                            style="color: red" class="col-sm-1">Xóa ảnh</a>
                     </div>
                     <br>
-                    <div class="form-check" id="image_show5">
-                    </div>
-                    <input type="hidden" name="anh5" id="anh5">
-                    <br>
 
                     <div class="row">
+                        <div class="form-check" id="image_show6">
+                        </div>
+                        <input type="hidden" name="anh6" id="anh6">
                         <input type="file" class="form-check col-sm-auto" id="upload6">
                         <a href="#"
                            onclick="xoaAnh6()"
                            style="color: red" class="col-sm-1">Xóa ảnh</a>
                     </div>
                     <br>
-                    <div class="form-check" id="image_show6">
-                    </div>
-                    <input type="hidden" name="anh6" id="anh6">
-                    <br>
 
                     <div class="row">
+                        <div class="form-check" id="image_show7">
+                        </div>
+                        <input type="hidden" name="anh7" id="anh7">
                         <input type="file" class="form-check col-sm-auto" id="upload7">
                         <a href="#"
                            onclick="xoaAnh7()"
                            style="color: red" class="col-sm-1">Xóa ảnh</a>
                     </div>
                     <br>
-                    <div class="form-check" id="image_show7">
-                    </div>
-                    <input type="hidden" name="anh7" id="anh7">
-                    <br>
 
                     <div class="row">
+                        <div class="form-check" id="image_show8">
+                        </div>
+                        <input type="hidden" name="anh8" id="anh8">
                         <input type="file" class="form-check col-sm-auto" id="upload8">
                         <a href="#"
                            onclick="xoaAnh8()"
                            style="color: red" class="col-sm-1">Xóa ảnh</a>
                     </div>
                     <br>
-                    <div class="form-check" id="image_show8">
-                    </div>
-                    <input type="hidden" name="anh8" id="anh8">
-                    <br>
 
                     <div class="row">
+                        <div class="form-check" id="image_show9">
+                        </div>
+                        <input type="hidden" name="anh9" id="anh9">
                         <input type="file" class="form-check col-sm-auto" id="upload9">
                         <a href="#"
                            onclick="xoaAnh9()"
                            style="color: red" class="col-sm-1">Xóa ảnh</a>
                     </div>
                     <br>
-                    <div class="form-check" id="image_show9">
-                    </div>
-                    <input type="hidden" name="anh9" id="anh9">
-                    <br>
 
                     <div class="row">
+                        <div class="form-check" id="image_show10">
+                        </div>
+                        <input type="hidden" name="anh10" id="anh10">
                         <input type="file" class="form-check col-sm-auto" id="upload10">
                         <a href="#"
                            onclick="xoaAnh10()"
                            style="color: red" class="col-sm-1">Xóa ảnh</a>
                     </div>
-                    <br>
-                    <div class="form-check" id="image_show10">
-                    </div>
-                    <input type="hidden" name="anh10" id="anh10">
                 </div>
 
 
@@ -232,7 +220,7 @@
             <!-- /.card-body -->
 
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">thêm sản phẩm</button>
+                <button type="submit" class="btn btn-primary">Thêm</button>
             </div>
             @csrf
         </form>

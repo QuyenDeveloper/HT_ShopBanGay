@@ -21,7 +21,7 @@ class productController extends Controller
     public function index()
     {if (Auth::user()->id ==1){
         return view('web.admin.Products.list', [
-            'title'=>'xem tất cả bản phẩm',
+            'title'=>'Xem tất cả bản phẩm',
             'products'=>$this->productService->getAll()
         ]);}else return redirect() -> back();
     }

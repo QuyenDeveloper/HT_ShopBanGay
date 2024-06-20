@@ -124,8 +124,8 @@
                 <td>{{$product->name}}</td>
                 <td>{{$product->menu_name1}}</td>
                 <td>{{$product->theloai}}</td>
-                <td>{{$product->money}} VND</td>
-                <td>{{$product->money_sale}} VND</td>
+                <td>{{number_format($product->money,0,',','.')}} VND</td>
+                <td>{{number_format($product->money_sale,0,',','.')}} VND</td>
                 <td>{{$product->nhanhieu}}</td>
                 <td>
                     @if($product->size1 != null)

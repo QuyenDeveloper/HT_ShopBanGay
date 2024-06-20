@@ -13,11 +13,11 @@
                        <span class="prodtb-i-price">
                             <?php $return = true ?>
                             @if($return && $product->money_sale > 0)
-                                <p>{{number_format($product->money_sale)}} đ <del><strike style="color: red;">{{number_format($product->money)}} đ</strike></del></p>
+                                <p>{{number_format($product->money_sale,0,',','.')}} đ <del><strike style="color: red;">{{number_format($product->money,0,',','.')}} đ</strike></del></p>
                                 <?php $return = false ?>
                             @endif
                             @if($return)
-                                <p>{{number_format($product->money)}} đ</p>
+                                <p>{{number_format($product->money,0,',','.')}} đ</p>
                             @endif
                         </span>
                     <p class="prodtb-i-qnt">

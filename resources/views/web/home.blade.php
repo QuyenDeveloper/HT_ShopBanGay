@@ -82,12 +82,12 @@
                                     <p class="prod-i-price">
                                         <?php $return = true ?>
                                         @if($return && $product_all->money_sale > 0)
-                                            <center><p>{{$product_all->money_sale}} đ - <strike style="color: red;">{{$product_all->money}} đ</strike></p></center>
+                                            <center><p>{{number_format($product_all->money_sale, 0, ',', '.')}} đ - <strike style="color: red;">{{number_format($product_all->money,0,',', '.')}}đ</strike></p></center>
 
                                     <?php $return = false ?>
                                     @endif
                                     @if($return)
-                                        <center><p>{{$product_all->money}} đ</p></center>
+                                        <center><p>{{number_format($product_all->money, 0, ',', '.')}} đ</p></center>
                                         @endif
                                         </p>
                                 </li>
@@ -120,12 +120,12 @@
                                     <p class="prod-i-price">
                                         <?php $return = true ?>
                                         @if($return && $product_nam->money_sale > 0)
-                                            <center><p>{{$product_nam->money_sale}} đ - <strike style="color: red;">{{$product_nam->money}} đ</strike></p></center>
+                                            <center><p>{{number_format($product_nam->money_sale, 0, ',', '.')}} đ - <strike style="color: red;">{{number_format($product_nam->money, 0, ',', '.')}} đ</strike></p></center>
 
                                     <?php $return = false ?>
                                     @endif
                                     @if($return)
-                                        <center><p>{{$product_nam->money}} đ</p></center>
+                                        <center><p>{{number_format($product_nam->money, 0, ',', '.')}} đ</p></center>
                                         @endif
                                         </p>
                                 </li>
@@ -158,12 +158,12 @@
                                     <p class="prod-i-price">
                                         <?php $return = true ?>
                                         @if($return && $product_nu->money_sale > 0)
-                                            <center><p>{{$product_nu->money_sale}} đ - <strike style="color: red;">{{$product_nu->money}} đ</strike></p></center>
+                                            <center><p>{{number_format($product_nu->money_sale, 0, ',', '.')}} đ - <strike style="color: red;">{{number_format($product_nu->money, 0, ',', '.')}} đ</strike></p></center>
 
                                     <?php $return = false ?>
                                     @endif
                                     @if($return)
-                                        <center><p>{{$product_nu->money}} đ</p></center>
+                                        <center><p>{{number_format($product_nu->money, 0, ',', '.')}} đ</p></center>
                                         @endif
                                         </p>
                                 </li>
@@ -196,12 +196,12 @@
                                     <p class="prod-i-price">
                                         <?php $return = true ?>
                                         @if($return && $product_treem0->money_sale > 0)
-                                            <center><p>{{$product_treem0->money_sale}} đ - <strike style="color: red;">{{$product_treem0->money}} đ</strike></p></center>
+                                            <center><p>{{number_format($product_treem0->money_sale, 0, ',', '.')}} đ - <strike style="color: red;">{{number_format($product_treem0->money, 0, ',', '.')}} đ</strike></p></center>
 
                                     <?php $return = false ?>
                                     @endif
                                     @if($return)
-                                        <center><p>{{$product_treem0->money}} đ</p></center>
+                                        <center><p>{{number_format($product_treem0->money, 0, ',', '.')}} đ</p></center>
                                         @endif
                                         </p>
                                 </li>
@@ -280,8 +280,8 @@
                                     <a href="/trangchu/sanpham/NDsanphan/{{$product_sale->id}}">{{$product_sale->name}}</a>
                                 </h3>
                                 <p class="discounts-i-price">
-                                <p>{{$product_sale->money_sale}} đ  </p>
-                                <p><strike style="color: red;">{{$product_sale->money}} đ </strike></p>
+                                <p>{{number_format($product_sale->money_sale,0,',','.')}} đ  </p>
+                                <p><strike style="color: red;">{{number_format($product_sale->money,0,',','.')}} đ </strike></p>
                                 </p>
                             </li>
                         @endforeach
