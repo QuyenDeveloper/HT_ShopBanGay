@@ -49,5 +49,6 @@ class Helper{
         if (strlen($text) > $limit) {
             return substr($text, 0, $limit) . '...';
         }
+        return $text;
     }
 }
